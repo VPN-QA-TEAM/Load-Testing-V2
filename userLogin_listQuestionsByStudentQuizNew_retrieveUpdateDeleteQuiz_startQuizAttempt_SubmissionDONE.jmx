@@ -1561,7 +1561,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
               <stringProp name="ConstantTimer.delay">15000</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Accept" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
