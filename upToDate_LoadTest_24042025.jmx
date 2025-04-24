@@ -50,13 +50,13 @@
           </elementProp>
           <elementProp name="base_url" elementType="Argument">
             <stringProp name="Argument.name">base_url</stringProp>
-            <stringProp name="Argument.value">backend-v2.portalsiswa.id</stringProp>
+            <stringProp name="Argument.value">backend-v2.promisedland.id</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Server test cek logging (BE Team) --&gt; 108.137.124.74</stringProp>
           </elementProp>
           <elementProp name="feurl" elementType="Argument">
             <stringProp name="Argument.name">feurl</stringProp>
-            <stringProp name="Argument.value">portalsiswa.id</stringProp>
+            <stringProp name="Argument.value">promisedland.id</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="port" elementType="Argument">
@@ -173,12 +173,6 @@
             <stringProp name="Argument.desc">createQuizAttempt NEW</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="course_id" elementType="Argument">
-            <stringProp name="Argument.name">course_id</stringProp>
-            <stringProp name="Argument.value">739</stringProp>
-            <stringProp name="Argument.desc">Course K13 (Get isting Preloaded Subject)--&gt; 158 =  kelas 7  || 159 = kelas 8 || 160 = kelas 9</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="apache_usr" elementType="Argument">
             <stringProp name="Argument.name">apache_usr</stringProp>
             <stringProp name="Argument.value">Apache-HttpClient/4.5.13 (Java/1.8.0_252)</stringProp>
@@ -243,10 +237,10 @@
       <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="Load Test Login to Submit Quiz Refactor V2">
         <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <stringProp name="TargetLevel">1</stringProp>
-        <stringProp name="RampUp">10</stringProp>
+        <stringProp name="TargetLevel">2</stringProp>
+        <stringProp name="RampUp">30</stringProp>
         <stringProp name="Steps">0</stringProp>
-        <stringProp name="Hold">15</stringProp>
+        <stringProp name="Hold">10</stringProp>
         <stringProp name="LogFilename"></stringProp>
         <stringProp name="Iterations"></stringProp>
         <stringProp name="Unit">S</stringProp>
@@ -262,7 +256,7 @@
           <boolProp name="recycle">false</boolProp>
           <stringProp name="shareMode">shareMode.group</stringProp>
           <boolProp name="stopThread">true</boolProp>
-          <stringProp name="variableNames">login,password,school_id</stringProp>
+          <stringProp name="variableNames">login,password,school_id,quiz_id</stringProp>
         </CSVDataSet>
         <hashTree/>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SCHOOL LIST">
@@ -803,12 +797,12 @@
             <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
               <collectionProp name="Arguments.arguments">
-                <elementProp name="course" elementType="HTTPArgument">
+                <elementProp name="page_size" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${course_id}</stringProp>
+                  <stringProp name="Argument.value">9999</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">course</stringProp>
+                  <stringProp name="Argument.name">page_size</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -818,7 +812,7 @@
               <stringProp name="ConstantTimer.delay">1000</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Accept" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -871,7 +865,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
               <stringProp name="JSON_PATH">$.code</stringProp>
               <stringProp name="EXPECTED_VALUE">200</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -924,7 +918,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">800</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -986,7 +980,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
               <stringProp name="JSON_PATH">$.code</stringProp>
               <stringProp name="EXPECTED_VALUE">200</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -995,7 +989,7 @@
               <boolProp name="ISREGEX">true</boolProp>
             </JSONPathAssertion>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="jsonExtractor(id_quiz_idx0)" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="jsonExtractor(id_quiz_idx0)">
               <stringProp name="JSONPostProcessor.referenceNames">id_quiz_idx0</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].id</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
@@ -1008,11 +1002,11 @@
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/{id}/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/id_quiz_idx0/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-            <stringProp name="HTTPSampler.path">${path_quiz}/${id_quiz_idx0}/</stringProp>
+            <stringProp name="HTTPSampler.path">${path_quiz}/${quiz_id}/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1022,11 +1016,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">500</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Accept" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -1079,7 +1073,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
               <stringProp name="JSON_PATH">$.data.id</stringProp>
               <stringProp name="EXPECTED_VALUE">${id_quiz_idx0}</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -1186,7 +1180,7 @@
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-            <stringProp name="HTTPSampler.path">${path_quizAttempts}</stringProp>
+            <stringProp name="HTTPSampler.path">${path_quizAttempts}?quiz=${quiz_id}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1196,7 +1190,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;quiz&quot;: ${id_quiz_idx0},&#xd;
+  &quot;quiz&quot;: ${quiz_id},&#xd;
   &quot;start&quot;:  &quot;${startTime}&quot;,&#xd;
   &quot;device&quot;: &quot;web&quot;,&#xd;
   &quot;device_information&quot;: {&#xd;
@@ -1242,7 +1236,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
               <stringProp name="ConstantTimer.delay">120000</stringProp>
             </ConstantTimer>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Accept" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
@@ -1299,7 +1293,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
               <stringProp name="JSON_PATH">$.code</stringProp>
               <stringProp name="EXPECTED_VALUE">201</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -1309,7 +1303,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/questions/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/questions/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -1322,10 +1316,17 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
               <collectionProp name="Arguments.arguments">
                 <elementProp name="quiz" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${id_quiz_idx0}</stringProp>
+                  <stringProp name="Argument.value">${quiz_id}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">quiz</stringProp>
+                </elementProp>
+                <elementProp name="page_size" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">9999</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">page_size</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -1425,7 +1426,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-            <stringProp name="HTTPSampler.path">${path_quizAttempts}/${id_quiz_idx0}/</stringProp>
+            <stringProp name="HTTPSampler.path">${path_quizAttempts}${quiz_id}/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">PATCH</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1610,7 +1611,7 @@ vars.put(&quot;endTime&quot;, formattedUtcTime)
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1647,7 +1648,7 @@ vars.put(&quot;endTime&quot;, formattedUtcTime)
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
