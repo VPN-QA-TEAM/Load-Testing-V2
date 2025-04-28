@@ -6,7 +6,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="false">
@@ -51,13 +50,13 @@
           </elementProp>
           <elementProp name="base_url" elementType="Argument">
             <stringProp name="Argument.name">base_url</stringProp>
-            <stringProp name="Argument.value">backend-v2.promisedland.id</stringProp>
+            <stringProp name="Argument.value">backend-v2.portal-sekolah.com</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Server test cek logging (BE Team) --&gt; 108.137.124.74</stringProp>
           </elementProp>
           <elementProp name="feurl" elementType="Argument">
             <stringProp name="Argument.name">feurl</stringProp>
-            <stringProp name="Argument.value">promisedland.id</stringProp>
+            <stringProp name="Argument.value">portal-sekolah.com</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="port" elementType="Argument">
@@ -238,7 +237,7 @@
       <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="Load Test Login to Submit Quiz Refactor V2">
         <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <stringProp name="TargetLevel">3</stringProp>
+        <stringProp name="TargetLevel">5</stringProp>
         <stringProp name="RampUp">15</stringProp>
         <stringProp name="Steps">0</stringProp>
         <stringProp name="Hold">25</stringProp>
@@ -251,7 +250,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">D:/Performace Testing/Portal Sekolah/STAGING/Load-Testing-V2/UserData.csv</stringProp>
+          <stringProp name="filename">C:/loadTestFinal/Load-Testing-V2/UserData.csv</stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">false</boolProp>
@@ -260,11 +259,11 @@
           <stringProp name="variableNames">login,password,school_id,quiz_id</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SCHOOL LIST" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SCHOOL LIST">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/school/schools/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/school/schools/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.path">${path_schools}/?page_size=9999</stringProp>
@@ -343,11 +342,11 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOGIN" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOGIN">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/v2/auth/login/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/v2/auth/login/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -465,11 +464,11 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOAD DASHBOARD PAGE" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOAD DASHBOARD PAGE">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/auth/loggedinuserDetailsNew/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/auth/loggedinuserDetailsNew/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -536,7 +535,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
               <stringProp name="JSON_PATH">$.code</stringProp>
               <stringProp name="EXPECTED_VALUE">200</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -546,7 +545,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/auth/dashboardnew/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/auth/dashboardnew/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -623,7 +622,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/calendar/listTodayEvents/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/calendar/listTodayEvents/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -700,7 +699,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/quiz/listUpcomingQuizzes/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/quiz/listUpcomingQuizzes/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -782,11 +781,11 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOAD SUBJECT LIST &amp; QUIZ LIST (V2)" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="LOAD SUBJECT LIST &amp; QUIZ LIST (V2)">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/course/course-subjects/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/course/course-subjects/">
             <stringProp name="TestPlan.comments">course preloaded class 7 K13</stringProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
@@ -876,7 +875,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/v2/quiz/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -1017,7 +1016,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">500</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -1074,7 +1073,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
               <stringProp name="JSON_PATH">$.data.id</stringProp>
               <stringProp name="EXPECTED_VALUE">${quiz_id}</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -1084,7 +1083,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET current_server_time/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET current_server_time/">
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
@@ -1173,7 +1172,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="START QUIZ ATTEMPTS" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="START QUIZ ATTEMPTS">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -1390,7 +1389,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion">
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
               <stringProp name="JSON_PATH">$.data[0].quiz</stringProp>
               <stringProp name="EXPECTED_VALUE">${quiz_id}</stringProp>
               <boolProp name="JSONVALIDATION">true</boolProp>
@@ -1419,7 +1418,7 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SUBMIT QUIZ ATTEMPTS" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="SUBMIT QUIZ ATTEMPTS">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -1445,7 +1444,214 @@ vars.put(&quot;startTime&quot;, formattedUtcTime)
     },&#xd;
     {&#xd;
       &quot;id&quot;: ${QID_2},&#xd;
-      &quot;answer&quot;: ${OPTID_8}&#xd;
+      &quot;answer&quot;: ${OPTID_5}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_3},&#xd;
+      &quot;answer&quot;: ${OPTID_9}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_4},&#xd;
+      &quot;answer&quot;: ${OPTID_13}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_5},&#xd;
+      &quot;answer&quot;: ${OPTID_17}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_6},&#xd;
+      &quot;answer&quot;: ${OPTID_21}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_7},&#xd;
+      &quot;answer&quot;: ${OPTID_25}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_8},&#xd;
+      &quot;answer&quot;: ${OPTID_29}&#xd;
+    },   {&#xd;
+      &quot;id&quot;: ${QID_9},&#xd;
+      &quot;answer&quot;: ${OPTID_33}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_10},&#xd;
+      &quot;answer&quot;: ${OPTID_37}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_11},&#xd;
+      &quot;answer&quot;: ${OPTID_41}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_12},&#xd;
+      &quot;answer&quot;: ${OPTID_45}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_13},&#xd;
+      &quot;answer&quot;: ${OPTID_49}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_14},&#xd;
+      &quot;answer&quot;: ${OPTID_53}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_15},&#xd;
+      &quot;answer&quot;: ${OPTID_57}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_16},&#xd;
+      &quot;answer&quot;: ${OPTID_61}&#xd;
+    },   {&#xd;
+      &quot;id&quot;: ${QID_17},&#xd;
+      &quot;answer&quot;: ${OPTID_65}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_18},&#xd;
+      &quot;answer&quot;: ${OPTID_69}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_19},&#xd;
+      &quot;answer&quot;: ${OPTID_73}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_20},&#xd;
+      &quot;answer&quot;: ${OPTID_77}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_21},&#xd;
+      &quot;answer&quot;: ${OPTID_81}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_22},&#xd;
+      &quot;answer&quot;: ${OPTID_85}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_23},&#xd;
+      &quot;answer&quot;: ${OPTID_89}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_24},&#xd;
+      &quot;answer&quot;: ${OPTID_93}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_25},&#xd;
+      &quot;answer&quot;: ${OPTID_97}&#xd;
+    }, {&#xd;
+      &quot;id&quot;: ${QID_26},&#xd;
+      &quot;answer&quot;: ${OPTID_101}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_27},&#xd;
+      &quot;answer&quot;: ${OPTID_105}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_28},&#xd;
+      &quot;answer&quot;: ${OPTID_109}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_29},&#xd;
+      &quot;answer&quot;: ${OPTID_113}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_30},&#xd;
+      &quot;answer&quot;: ${OPTID_117}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_31},&#xd;
+      &quot;answer&quot;: ${OPTID_121}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_32},&#xd;
+      &quot;answer&quot;: ${OPTID_125}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_33},&#xd;
+      &quot;answer&quot;: ${OPTID_129}&#xd;
+    },   {&#xd;
+      &quot;id&quot;: ${QID_34},&#xd;
+      &quot;answer&quot;: ${OPTID_133}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_35},&#xd;
+      &quot;answer&quot;: ${OPTID_137}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_36},&#xd;
+      &quot;answer&quot;: ${OPTID_141}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_37},&#xd;
+      &quot;answer&quot;: ${OPTID_145}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_38},&#xd;
+      &quot;answer&quot;: ${OPTID_149}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_39},&#xd;
+      &quot;answer&quot;: ${OPTID_153}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_40},&#xd;
+      &quot;answer&quot;: ${OPTID_157}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_41},&#xd;
+      &quot;answer&quot;: ${OPTID_161}&#xd;
+    },   {&#xd;
+      &quot;id&quot;: ${QID_42},&#xd;
+      &quot;answer&quot;: ${OPTID_165}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_43},&#xd;
+      &quot;answer&quot;: ${OPTID_169}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_44},&#xd;
+      &quot;answer&quot;: ${OPTID_173}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_45},&#xd;
+      &quot;answer&quot;: ${OPTID_177}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_46},&#xd;
+      &quot;answer&quot;: ${OPTID_181}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_47},&#xd;
+      &quot;answer&quot;: ${OPTID_185}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_48},&#xd;
+      &quot;answer&quot;: ${OPTID_189}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_49},&#xd;
+      &quot;answer&quot;: ${OPTID_193}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_50},&#xd;
+      &quot;answer&quot;: ${OPTID_197}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_51},&#xd;
+      &quot;answer&quot;: ${OPTID_201}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_52},&#xd;
+      &quot;answer&quot;: ${OPTID_205}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_53},&#xd;
+      &quot;answer&quot;: ${OPTID_209}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_54},&#xd;
+      &quot;answer&quot;: ${OPTID_213}&#xd;
+    },&#xd;
+    {&#xd;
+      &quot;id&quot;: ${QID_55},&#xd;
+      &quot;answer&quot;: ${OPTID_217}&#xd;
     }&#xd;
   ]&#xd;
 }&#xd;
@@ -1568,7 +1774,7 @@ vars.put(&quot;endTime&quot;, formattedUtcTime)
             </SyncTimer>
             <hashTree/>
           </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler">
             <boolProp name="displayJMeterProperties">false</boolProp>
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
@@ -1612,7 +1818,7 @@ vars.put(&quot;endTime&quot;, formattedUtcTime)
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
